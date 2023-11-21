@@ -1,45 +1,30 @@
+#include "bs.h"
 #include<iostream>
-#include<vector>
-using namespace std;
 
-class binarySearch
+binarySearch::binarySearch() : ans(-1) {}
+
+int binarySearch::find(vector<int>& array, int l, int r, int target)
 {
-private:
-	int l;
-	int r;
-	int mid;
-	int target;
-	int ans=-1;
-	vector<int>array;
-public:
-	binarySearch(vector<int>& array,int target) {
-		l = 0;
-		r = array.size() - 1;
-		//mid = 0;
-		this->target = target;
-		this->array = array;
-	}
-
-	int find()
-	{
-
-		while (l < r)
+		int mid;//=0 // int ans;
+		while (l <= r)// ans==-1
 		{
+			std::cout << "Iteration\n";
 			mid = l + (r - l) / 2;
+			std::cout << "Mid" << ' ' << mid << '\n';
 			if (array[mid] == target)
 			{
 				ans = mid;
+				break;
 			}
 			else if (target > array[mid])
 			{
-				l = mid;
+				l = mid+1;
 			}
 			else
 			{
-				r = mid;
+				r = mid-1;
 			}
 		}
 
 		return ans;
-	}
-};
+}
